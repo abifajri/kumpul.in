@@ -92,9 +92,9 @@
                             <h5>League of Legends</h5>
                         </div>
                     </div>
-                    <div>
-
-                    </div>
+                </div>
+                <div style="padding-top:20px;">
+                    <button class="btn btn-primary" style="color:#385A82;"><a href="/edit_profile" style="color:#F6FAFF;"> Edit Profile </a></button>
                 </div>
             </div>
         </div>
