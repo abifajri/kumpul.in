@@ -21,4 +21,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/timeline', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
+Route::get('/chat', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
