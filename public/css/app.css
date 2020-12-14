@@ -10903,3 +10903,49 @@ a.text-dark:focus {
   }
 }
 
+body {
+  font-family: "Archivo", sans-serif !important;
+}
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #F6FAFF;
+  overflow-x: hidden;
+  padding-top: 20px;
+  padding-left: 40px;
+  border-right: 1.5px solid green;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 22px;
+  color: #385A82;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #008B75;
+}
+
+.main {
+  margin-left: 160px;
+  /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
