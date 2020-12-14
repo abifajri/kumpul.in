@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="roomCapacity">Capacity</label>
-                    <input class="form-control" id="roomCapacity" placeholder="">
+                    <input type="number" min="1" max="99" size="1" maxlength="2" class="form-control" id="roomCapacity" placeholder="">
                 </div>
                 <div class="form-group">
                     <label for="roomActivity">Activity</label>
