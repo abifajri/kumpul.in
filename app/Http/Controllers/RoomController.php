@@ -9,4 +9,8 @@ class RoomController extends Controller
     public function index() {
         return view('room.room');
     }
+
+    public function create() {
+        return view('room.create');
+    }
 }
