@@ -515,13 +515,8 @@ eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourc
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! C:\xampp\htdocs\Kumpul.in\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\Kumpul.in\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
 __webpack_require__(/*! D:\XAMPP\htdocs\kumpul.in\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\XAMPP\htdocs\kumpul.in\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> f64a7f27438667b6b26bd22561237bfeb7b41a46
 
 
 /***/ })
