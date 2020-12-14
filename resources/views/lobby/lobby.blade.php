@@ -39,7 +39,7 @@
                     </div> 
                 </ul>
                 <div class="card-footer text-center">
-                    <a href="/create_room">
+                    <a href="#">
                         <button type="button" class="btn btn-info">Join Room</button>
                     </a>
                 </div>
