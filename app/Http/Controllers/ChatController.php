@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TimelineController extends Controller
+class ChatController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -13,6 +13,6 @@ class TimelineController extends Controller
      */
     public function index()
     {
-        return view('timeline');
-    }
+        return view('chat');
+    }    
 }

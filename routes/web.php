@@ -22,6 +22,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::get('/chat', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
+
+
 Route::get('/groups/create', function() {
     return view('groups.create');
 })->name('gorups.create');
@@ -34,7 +37,7 @@ Route::get('/room/edit', function(){
     return view('room.edit');
 })->name('room.edit');
 
-Route::get('/timeline', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
+
 Route::get('/timeline', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
 
 Route::get('/view_profile', [App\Http\Controllers\ProfileController::class, 'view_index'])->name('view_profile');
