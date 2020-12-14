@@ -12,6 +12,7 @@ body{
     padding-left: 250px;
     padding-right: 250px;
 }
+
 textarea{
 
     background-color: #DAE8F9 ; 
