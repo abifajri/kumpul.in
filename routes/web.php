@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/groups/create', function() {
+    return view('groups.create');
+})->name('gorups.create');
+
+Route::get('/groups', function() {
+    return view('groups.index');
+})->name('groups.index');
