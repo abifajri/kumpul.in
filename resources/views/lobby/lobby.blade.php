@@ -5,9 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h3 class="text-center">
-                Room
+                Lobby
             </h3>
 
+            <div class="d-flex justify-content-center">
+                <a href="/create_room">
+                    <button type="button" class="btn btn-info">Create Room</button>
+                </a>
+            </div>
+
+            <br>
             <div class="card">
                 <div class="card-header">
                     Fun Karaoke! (Private)
@@ -33,30 +40,8 @@
                         </div>
                     </div> 
                 </ul>
-            </div>        
-            <br>
-            <div class="card">
-                <div class="card-header">
-                    Room Member
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">img Seraphine</li>
-                    <li class="list-group-item">img Ahri</li>
-                    <li class="list-group-item">img Akali</li>
-                </ul>
-            </div>        
-            <br>
-            <div class="card">
-                <div class="card-header">
-                    Chat
-                </div>
-                <div class="card-body">
-                    <p>Seraphine: Hi!</p>
-                    <p>Ahri: Hello!</p>
-                    <p>Akali: Ahoy!</p>
-                    <p>Seraphine: Let's have fun today!</p>
-                </div>
             </div>
+
         </div>
     </div>
 </div>
