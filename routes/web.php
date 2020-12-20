@@ -33,7 +33,11 @@ Route::get('/room/edit', function(){
 })->name('room.edit');
 
 Route::get('/', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
+
 Route::get('/timeline', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
+Route::get('/post/create', [App\Http\Controllers\TimelineController::class, 'create'])->name('post.create');
+Route::post('/post/create', [App\Http\Controllers\TimelineController::class, 'store'])->name('post.store');
+
 Route::get('/view_profile', [App\Http\Controllers\ProfileController::class, 'view_index'])->name('view_profile');
 Route::get('/edit_profile', [App\Http\Controllers\ProfileController::class, 'edit_index'])->name('edit_profile');
 
