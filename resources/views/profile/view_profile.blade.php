@@ -49,22 +49,20 @@
             <img class="pf_pic" src="https://i.pinimg.com/originals/0b/22/42/0b2242c6a2173763a1fe3a40ad5b019e.jpg" alt="Serasimps" width="225" height="225">
             </div>
         </div>
-        <div class="col-sm-8 row" style="padding-left:40px; padding-top:30px;">
+        <div class="col-sm-6 row" style="padding-left:40px; padding-top:30px;">
             <div class=row>
-                <h4 class="pf_name">Seraphine</h4>
+                <h4 class="pf_name">{{$user->name}}</h4>
             </div>
             <div class=row>
-                <h6 class="pf_username">@seraphine.qt</h4>
+                <h6 class="pf_username">@ {{$user->username}}</h4>
             </div>
             <div class=row>
-                <h6 class="pf_bio">Activist | Nonwhite | Trans | Bi |</h4>
-                <h6 class="pf_bio">Blacktivist</h4>
-                <h6 class="pf_bio">twitch.tv/seraph1ne69x</h4>
+                <h6 class="pf_bio">{{$user->status}}</h4>
             </div>
         </div>
-        <!-- <div class="col-sm-14" style="color:fdb827;">
-            <p>test2</p>
-        </div> -->
+        <div class="col-sm-2">
+            {{-- <p>empty space</p> --}}
+        </div>
     </div>
     <div class="row justify-content-center" style="padding-top: 30px;  padding-right:400px">
         <div class="col-sm-1">  
@@ -72,11 +70,11 @@
         <div class="col-sm-11">
             <div class="container-fluid" style="width:680px;">
                 <div class="row align-items-start" style="background-color:#BAD9FF; padding-top:15px; padding-left:50px;">
-                    <h4 style="color:#000000; ">About Seraphine</h4>
+                    <h4 style="color:#000000; ">About {{$user->name}}</h4>
                 </div>
                 <div class="row" style="background-color:#DAE8F9; padding-top:20px; padding-bottom:35px;">
                     <h6 style="color:#697885">Birth date</h6>
-                    <h4 style="color:#435E77;">October 24th, 2020 </h4>
+                    <h4 style="color:#435E77;">{{$user->birth_date}}</h4>
                     <br><br>
                     <h6 style="color:#697885">Hobby</h6>
                     <h4 style="color:#435E77; font-size: 20px;">Streaming </h4>

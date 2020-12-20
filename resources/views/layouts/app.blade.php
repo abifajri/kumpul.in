@@ -79,6 +79,23 @@
             <a href="/room">> Room</a>
             <a href="/chat">> Chat</a>
             <a href="/groups">> Group</a>
+
+            <div class="fixed-bottom">
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @else
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                @endif
+            </div>
         </div>
 
         <main class="py-4 main">
