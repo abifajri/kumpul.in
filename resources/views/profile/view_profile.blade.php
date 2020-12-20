@@ -113,7 +113,7 @@
                 
                 @if($user->id === Auth::id())
                     <div style="padding-top:20px;">
-                        <button class="btn btn-primary" style="color:#385A82;"><a href="/edit_profile" style="color:#F6FAFF;"> Edit Profile </a></button>
+                        <button class="btn btn-primary" style="color:#385A82;"><a href="/edit_profile/{{Auth::id()}}" style="color:#F6FAFF;"> Edit Profile </a></button>
                     </div>
                 @endif
             </div>

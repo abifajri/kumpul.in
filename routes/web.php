@@ -35,7 +35,8 @@ Route::get('/room/edit', function(){
 Route::get('/', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
 Route::get('/timeline', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
 Route::get('/view_profile/{id}', [App\Http\Controllers\ProfileController::class, 'view_index'])->name('view_profile');
-Route::get('/edit_profile', [App\Http\Controllers\ProfileController::class, 'edit_index'])->name('edit_profile');
+Route::get('/edit_profile/{id}', [App\Http\Controllers\ProfileController::class, 'edit_index'])->name('edit_profile');
+Route::post('/save_profile/{id}', [App\Http\Controllers\ProfileController::class, 'save_profile'])->name('save_profile');
 Route::get('/room', [App\Http\Controllers\RoomController::class, 'index'])->name('room');
 Route::get('/create_room', [App\Http\Controllers\RoomController::class, 'create'])->name('create_room');
 Route::get('/lobby', [App\Http\Controllers\LobbyController::class, 'index'])->name('lobby');
