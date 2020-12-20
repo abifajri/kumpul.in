@@ -46,25 +46,31 @@
     <div class="row align-items-start justify-content-center">
         <div class="col-sm-4">
             <div style="padding-left:140px;">
-            <img class="pf_pic" src="https://i.pinimg.com/originals/0b/22/42/0b2242c6a2173763a1fe3a40ad5b019e.jpg" alt="Serasimps" width="225" height="225">
+            @if(! $user->img_url)
+                <img class="pf_pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Default PP" width="225" height="225">
+            @else
+                <img class="pf_pic" src="{{$user->img_url}}" alt="your pfp" width="225" height="225">
+            @endif
             </div>
         </div>
-        <div class="col-sm-8 row" style="padding-left:40px; padding-top:30px;">
+        <div class="col-sm-6 row" style="padding-left:40px; padding-top:30px;">
             <div class=row>
-                <h4 class="pf_name">Seraphine</h4>
+                <h4 class="pf_name">{{$user->name}}</h4>
             </div>
             <div class=row>
-                <h6 class="pf_username">@seraphine.qt</h4>
+                <h6 class="pf_username">@ {{$user->username}}</h4>
             </div>
             <div class=row>
-                <h6 class="pf_bio">Activist | Nonwhite | Trans | Bi |</h4>
-                <h6 class="pf_bio">Blacktivist</h4>
-                <h6 class="pf_bio">twitch.tv/seraph1ne69x</h4>
+                @if(! $user->status)
+                    <h6 class="pf_bio">No Bio...</h4>
+                @else
+                    <h6 class="pf_bio">{{$user->status}}</h4>
+                @endif
             </div>
         </div>
-        <!-- <div class="col-sm-14" style="color:fdb827;">
-            <p>test2</p>
-        </div> -->
+        <div class="col-sm-2">
+            {{-- <p>empty space</p> --}}
+        </div>
     </div>
     <div class="row justify-content-center" style="padding-top: 30px;  padding-right:400px">
         <div class="col-sm-1">  
@@ -75,34 +81,51 @@
                     <h4 style="color:#000000; ">Edit Profile</h4>
                 </div>
                 <div class="row" style="padding-top:20px; padding-bottom:35px;">
-                    <form>
+                    <form method="POST" action="/save_profile/{{$user->id}}">
+                    @csrf
                     <div class="form-group">
-                        <label for="profilepic">Profile Picture :</label>
-                        <input type="text" class="form-control" id="profilepic" placeholder="www.img.jpg">
+                        <label for="img_url">Profile Picture URL:</label>
+                        <input type="text" class="form-control" id="img_url" name="img_url" value="{{$user->img_url}}">
                     </div>
                     <div class="form-group">
                         <label for="name">Name :</label>
-                        <input type="text" class="form-control" id="name" placeholder="Seraphine">
+                        <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}">
                     </div>
                     <div class="form-group">
-                        <label for="birthdate">Birth date :</label>
-                        <input type="date" class="form-control" id="birthdate" value="2020-10-24">
+                        <label for="birth_date">Birth date :</label>
+                        <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{$user->birth_date}}">
                     </div>
                     <div class="form-group">
                         <label for="hobby">Hobby :</label>
-                        <input type="text" class="form-control" id="hobby" placeholder="Streaming; Playing games; Getting Donations">
+                        <input type="text" class="form-control" id="hobby" name="hobby" value="{{$user->birth_date}}">
                     </div>
                     <div class="form-group">
-                        <label for="bio">Bio :</label>
-                        <textarea class="form-control" id="bio" rows="4">Activist | Nonwhite | Trans | Bi |
-Blacktivist
-twitch.tv/seraph1ne69x
-                        </textarea>
+                        <label for="status">Bio :</label>
+                        <textarea class="form-control" id="status" name="status" rows="4">{{$user->status}}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="color:#385A82;"><a style="color:#F6FAFF;"> Submit </a></button>
                     </form>
                 </div>
             </div>
+            @if(count($errors) > 0)
+            @foreach($errors->all() as $error)
+                <div class="alert alert-danger">
+                    {{$error}}
+                </div>
+            @endforeach
+            @endif
+
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{session('success')}}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{session('error')}}
+                </div>
+            @endif
         </div>
     </div>
 </div>
