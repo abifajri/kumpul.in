@@ -38,7 +38,7 @@ Route::get('/timeline', [App\Http\Controllers\TimelineController::class, 'index'
 Route::get('/post/create', [App\Http\Controllers\TimelineController::class, 'create'])->name('post.create');
 Route::post('/post/create', [App\Http\Controllers\TimelineController::class, 'store'])->name('post.store');
 
-Route::get('/view_profile', [App\Http\Controllers\ProfileController::class, 'view_index'])->name('view_profile');
+Route::get('/view_profile/{id}', [App\Http\Controllers\ProfileController::class, 'view_index'])->name('view_profile');
 Route::get('/edit_profile', [App\Http\Controllers\ProfileController::class, 'edit_index'])->name('edit_profile');
 
 // Lobby

@@ -74,7 +74,7 @@
             <a href="#about">Kumpul.in</a>
             <br>
             <a href="/timeline">> Timeline</a>
-            <a href="/view_profile">> Profile</a>
+            <a href="/view_profile/{{Auth::id()}}">> Profile</a>
             <a href="/lobby">> Lobby</a>
             <a href="/room">> Room</a>
             <a href="/chat">> Chat</a>
