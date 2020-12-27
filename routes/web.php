@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GroupsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +23,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/groups/create', function() {
-    return view('groups.create');
-})->name('gorups.create');
+Route::get('/groups/create', [GroupsController::class, 'create'])->name('gorups.create');
 
-Route::get('/groups', function() {
-    return view('groups.index');
-})->name('groups.index');
+Route::get('/groups/{group}', [GroupsController::class, 'index'])->name('groups.index');
+
+Route::post('/groups', [GroupsController::class, 'store'])->name('groups.store');
 
 Route::get('/room/edit', function(){
     return view('room.edit');
