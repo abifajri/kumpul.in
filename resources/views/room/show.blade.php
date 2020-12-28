@@ -10,28 +10,28 @@
 
             <div class="card">
                 <div class="card-header">
-                    {{$room->name}} 
-                    @if($room->isPrivate == true)
+                    {{$data['0']->name}} 
+                    @if($data['0']->isPrivate == true)
                         (Private)
                     @endif
                 </div>
                 <ul class="list-group list-group-flush">
                     <div class="row">
                         <div class="col-8">
-                            <li class="list-group-item">Room ID: {{$room->id}}</li>
-                            <li class="list-group-item">Capacity: {{$room->capacity}}</li>
-                            <li class="list-group-item">Activity: {{$room->activity}}</li>
+                            <li class="list-group-item">Room ID: {{$data['0']->id}}</li>
+                            <li class="list-group-item">Capacity: {{$data['0']->capacity}}</li>
+                            <li class="list-group-item">Activity: {{$data['0']->activity}}</li>
                             <li class="list-group-item">
                                 <u>Description</u> <br>
-                                {{$room->description}}
+                                {{$data['0']->description}}
                             </li>
                         </div>
                         <div class="col-4 text-center">
                             <u>Room Master</u> <br>
                             <img src="https://avatarfiles.alphacoders.com/252/252465.jpg" class="rounded-circle" style="width:80px;height:80px;"> <br>
-                            Seraphine <br>
-                            <span style="font-size:10px;">@seraphine.qt</span> <br>
-                            <small>Created on {{$room->created_at}}</small>
+                            {{ \App\Models\User::where('id', $data['0']->admin_id)->first()->name }} <br>
+                            <span style="font-size:12px;">{{ \App\Models\User::where('id', $data['0']->admin_id)->first()->username }} </span> <br>
+                            <small>Created on {{$data['0']->created_at}}</small>
                         </div>
                     </div> 
                 </ul>
@@ -42,9 +42,9 @@
                     Room Member
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><img src="https://avatarfiles.alphacoders.com/252/252465.jpg" class="rounded-circle" style="width:40px;height:40px;"> Seraphine</li>
-                    <li class="list-group-item"><img src="https://i.pinimg.com/originals/b3/0e/54/b30e54bf0bddc2352761a5e35f343647.jpg" class="rounded-circle" style="width:40px;height:40px;"> Ahri</li>
-                    <li class="list-group-item"><img src="https://avatarfiles.alphacoders.com/160/160743.jpg" class="rounded-circle" style="width:40px;height:40px;"> Akali</li>
+                    @foreach($data['1'] as $user_room)
+                    <li class="list-group-item"><img src="https://avatarfiles.alphacoders.com/252/252465.jpg" class="rounded-circle" style="width:40px;height:40px;"> {{  \App\Models\User::where('id', $user_room->user_id)->first()->name }}</li>
+                    @endforeach
                 </ul>
             </div>        
             <br>

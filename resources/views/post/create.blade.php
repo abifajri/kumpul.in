@@ -8,7 +8,9 @@
             padding-left: 250px;
         }
     </style>
-    <body>
+    <body style="background-color: #F6FAFF;
+                padding-top: 25px;
+                padding-left: 250px;">
         <div class="container">
             <form clas="" action="{{ route('post.store') }}" method="post">
                 {{ csrf_field() }}
