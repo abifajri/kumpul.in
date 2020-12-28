@@ -16,4 +16,8 @@ class Room extends Model
     public function members() {
         return $this->belongsToMany('App\Models\User', 'user_room');
     }
+
+    public function admin() {
+        return $this->belongsTo(User::class, 'admin_id');
+    }
 }

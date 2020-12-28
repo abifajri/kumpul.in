@@ -26,9 +26,8 @@ Route::get('/groups/{group}', [GroupsController::class, 'index'])->name('groups.
 
 Route::post('/groups/create', [GroupsController::class, 'store'])->name('groups.store');
 
-Route::get('/room/edit', function(){
-    return view('room.edit');
-})->name('room.edit');
+Route::get('/room/{room}/edit', [App\Http\Controllers\RoomController::class, 'edit'])->name('room.edit');
+Route::post('/room/{room}/edit', [App\Http\Controllers\RoomController::class, 'update'])->name('room.update');
 
 Route::get('/', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
 

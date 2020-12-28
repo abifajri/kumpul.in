@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Room;
 use App\Models\User;
 
@@ -46,6 +47,9 @@ class RoomController extends Controller
             'roomCapacity' =>  'required',
             'roomActivity' =>  'required',
         ]);
+
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
         
         // Create Room
         $room = new Room;
@@ -55,11 +59,11 @@ class RoomController extends Controller
         $room->activity = $request->input('roomActivity');
         $room->password = $request->input('roomPassword');
         $room->isPrivate = $request->has('roomIsPrivate');
+        $room->admin_id = $user_id;
         $room->save();
         
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
         $user->memberOfRooms()->attach($room);
+
         return redirect()->route('show_room', ["id" => $room->id]);
     }
 
@@ -84,9 +88,15 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        if(Auth::check()){
+            $room = Room::find($id);
+            if(Auth::id() == $room->admin_id){
+                return view('room.edit')->with('room', $room);
+            }
+        }
 
+        return redirect()->route('timeline');
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -96,7 +106,27 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $request->validate([
+                'roomName' =>  'required',
+                'roomDescription' =>  'required',
+                'roomCapacity' =>  'required',
+                'roomActivity' =>  'required',
+            ]);
+            $room = Room::find($id);
+            $room->name = $request->input('roomName');
+            $room->description = $request->input('roomDescription');
+            $room->capacity = $request->input('roomCapacity');
+            $room->activity = $request->input('roomActivity');
+            $room->password = $request->input('roomPassword');
+            $room->isPrivate = $request->has('roomIsPrivate');
+            $room->save();
+
+            return redirect()->route('show_room', ['id' => $room->id]);
+
+        } catch (\Throwable $th) {
+            return redirect()->route('room.edit', ['id' => $room->id]);
+        }
     }
 
     /**
