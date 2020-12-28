@@ -45,7 +45,7 @@
                             </div> 
                         </ul>
                         <div class="card-footer text-center">
-                            <a href="{{route('room', ['id' => $room->id])}}">
+                            <a href="{{route('join_room', ['id' => $room->id])}}">
                                 <button type="button" class="btn btn-info">Join Room</button>
                             </a>
                         </div>

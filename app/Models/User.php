@@ -46,4 +46,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Group::class, 'group_members');
     }
+    
+    public function rooms() {
+        return $this->hasMany('App\Models\Room');
+    }
+    
+    public function memberOfRooms() {
+        return $this->belongsToMany('App\Models\Room', 'user_room');
+    }
 }
