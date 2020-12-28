@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\User;
 
 class RoomController extends Controller
 {
@@ -12,10 +13,12 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $room = Room::find($id);
-        return view('room.index')->with('room', $room);
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+
+        return view('room.index')->with('rooms', $user->memberOfRooms);
     }
 
     /**
@@ -53,8 +56,11 @@ class RoomController extends Controller
         $room->password = $request->input('roomPassword');
         $room->isPrivate = $request->has('roomIsPrivate');
         $room->save();
-            
-        return redirect()->route('room', ["id" => $room->id]);
+        
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $user->memberOfRooms()->attach($room);
+        return redirect()->route('show_room', ["id" => $room->id]);
     }
 
     /**
@@ -66,6 +72,8 @@ class RoomController extends Controller
     public function show($id)
     {
         //
+        $room = Room::find($id);
+        return view('room.show')->with('room', $room);
     }
 
     /**
