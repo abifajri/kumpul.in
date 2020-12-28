@@ -42,6 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_members');
+    }
+    
     public function rooms() {
         return $this->hasMany('App\Models\Room');
     }
