@@ -11,7 +11,7 @@
         .card{
             color : #008B75 ;
             background-color : #DAE8F9;
- ;
+
         }
 
         

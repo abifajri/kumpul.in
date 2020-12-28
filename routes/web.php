@@ -18,8 +18,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/chat', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
-
 Route::get('/groups/create', function() {
     return view('groups.create');
 })->name('gorups.create');
@@ -52,3 +50,13 @@ Route::get('/lobby', [App\Http\Controllers\LobbyController::class, 'index'])->na
 Route::get('/room/show/{id}', [App\Http\Controllers\RoomController::class, 'index'])->name('room');
 Route::get('/room/create', [App\Http\Controllers\RoomController::class, 'create'])->name('create_room');
 Route::post('/room/create', [App\Http\Controllers\RoomController::class, 'store'])->name('store_room');
+
+//chat
+Route::get('/chat', [App\Http\Controllers\ChatController::class, 'index'])->name('chat');
+Route::get('/test', function() {
+    broadcast(new App\Events\WebsocketDemoEvent('some data'));
+    return view('welcome');
+});
+
+Route::get('/messages', [App\Http\Controllers\ChatController::class, 'fetchMessages'])->name('fetchMessages');
+Route::post('/messages', [App\Http\Controllers\ChatController::class, 'sendMessage'])->name('sendMessage');
