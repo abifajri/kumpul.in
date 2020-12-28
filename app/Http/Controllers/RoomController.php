@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Room;
 use App\Models\User;
+use DB;
 
 class RoomController extends Controller
 {
@@ -75,9 +76,17 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        //
+        // try {
+
+        // } catch (\Throwable $th) {
+        //     return redirect()->route('timeline');
+        // }
+        
         $room = Room::find($id);
-        return view('room.show')->with('room', $room);
+        $user_room = DB::table('user_room')->where('room_id', $room->id)->get();
+        return view('room.show')->with('data', [$room, $user_room]);
+        // $room = Room::find($id);
+        // return view('room.show')->with('room', $room);
     }
 
     /**
