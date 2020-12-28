@@ -39,8 +39,10 @@ Route::get('/edit_profile', [App\Http\Controllers\ProfileController::class, 'edi
 
 // Lobby
 Route::get('/lobby', [App\Http\Controllers\LobbyController::class, 'index'])->name('lobby');
+Route::get('/lobby/join/{id}', [App\Http\Controllers\LobbyController::class, 'joinRoom'])->name('join_room');
 
 // Room
-Route::get('/room/show/{id}', [App\Http\Controllers\RoomController::class, 'index'])->name('room');
+Route::get('/room', [App\Http\Controllers\RoomController::class, 'index'])->name('room');
+Route::get('/room/show/{id}', [App\Http\Controllers\RoomController::class, 'show'])->name('show_room');
 Route::get('/room/create', [App\Http\Controllers\RoomController::class, 'create'])->name('create_room');
 Route::post('/room/create', [App\Http\Controllers\RoomController::class, 'store'])->name('store_room');
