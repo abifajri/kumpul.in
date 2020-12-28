@@ -9,10 +9,10 @@
                     @csrf
 
                     <div class="form-group row">
-                        <label for="group_name" class="col-md-4 col-form-label text-md-right">Group Name</label>
+                        <label for="name" class="col-md-4 col-form-label text-md-right">Group Name</label>
 
                         <div class="col-md-6">
-                            <input id="group_name" name="group_name" class="form-control" name="group_name" value="Group Name" required autofocus>
+                            <input id="name" name="name" class="form-control" name="name" value="Group Name" required autofocus>
                         </div>
                     </div>
 
@@ -34,7 +34,7 @@
                         <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                         <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                         </div>
                     </div>
 
