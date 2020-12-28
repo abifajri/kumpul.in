@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Room;
 use App\Models\User;
 
@@ -84,7 +85,14 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $room = Room::find($id);
+            if(Auth::check()){
+                return view('room.edit')->with('room', $room);
+            }
+        } catch (\Throwable $th) {
+            return redirect()->route('timeline');
+        }
     }
 
     /**
@@ -96,7 +104,18 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $data = $request->validate([
+                'roomName' =>  'required',
+                'roomDescription' =>  'required',
+                'roomCapacity' =>  'required',
+                'roomActivity' =>  'required',
+            ]);
+            $room = Room::find($id);
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**

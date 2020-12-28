@@ -4,78 +4,46 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div>
-                <h2>
-                    Edit Room
-                </h2>
-            </div>
-            <div>
-                <form action="/room">
-                    @csrf
+            <h3 class="text-center">
+                Create Room
+            </h3>
 
-                    <div class="form-group row">
-                        <label for="room_name" class="col-md-4 col-form-label text-md-right">Room Name</label>
-
-                        <div class="col-md-6">
-                            <input id="room_name" class="form-control" name="room_name" required autofocus>
+            <form method="PUT" action="{{route('room.update')}}">
+                @csrf
+                <div class="form-group">
+                    <label for="roomName">Room Name</label>
+                    <input class="form-control" id="roomName" name="roomName" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="roomDescription">Description</label>
+                    <textarea class="form-control" id="roomDescription" name="roomDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="roomCapacity">Capacity</label>
+                    <input type="number" min="1" max="99" size="1" maxlength="2" class="form-control" id="roomCapacity" name="roomCapacity" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="roomActivity">Activity</label>
+                    <input class="form-control" id="roomActivity" name="roomActivity" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="roomPassword">Password</label>
+                    <input class="form-control" id="roomPassword" name="roomPassword" placeholder="">
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">Is Private</div>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="roomIsPrivate" name="roomIsPrivate">
+                            <label class="form-check-label" for="roomIsPrivate" style="font-size:14px;">
+                                (Your room won't show in public lobby.)
+                            </label>
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="activity" class="col-md-4 col-form-label text-md-right">Activity</label>
-
-                        <div class="col-md-6">
-                            <input id="activity" class="form-control" name="activity" autofocus>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="room_description" class="col-md-4 col-form-label text-md-right">Room Description</label>
-
-                        <div class="col-md-6">
-                            <textarea id="room_description" class="form-control" name="room_description" rows="3" autofocus></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="visibility" class="col-md-4 col-form-label text-md-right">Private</label>
-
-                        <div class="col-md-6">
-                            <input type="checkbox" id="visibility" class="form-control" name="visibility" value="private" autofocus>
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                </div>
+                
+                <button type="submit" class="btn btn-info">Submit</button>
+            </form>
         </div>
     </div>
 </div>
