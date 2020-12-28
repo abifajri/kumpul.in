@@ -10,17 +10,20 @@
 
             <div class="card">
                 <div class="card-header">
-                    Fun Karaoke! (Private)
+                    {{$room->name}} 
+                    @if($room->isPrivate == true)
+                        (Private)
+                    @endif
                 </div>
                 <ul class="list-group list-group-flush">
                     <div class="row">
                         <div class="col-8">
-                            <li class="list-group-item">Room ID: R000001</li>
-                            <li class="list-group-item">Capacity: 5</li>
-                            <li class="list-group-item">Activity: Karaoke</li>
+                            <li class="list-group-item">Room ID: {{$room->id}}</li>
+                            <li class="list-group-item">Capacity: {{$room->capacity}}</li>
+                            <li class="list-group-item">Activity: {{$room->activity}}</li>
                             <li class="list-group-item">
                                 <u>Description</u> <br>
-                                Karaoke with Ahri, Kai’sa, Evelynn, and Akali.
+                                {{$room->description}}
                             </li>
                         </div>
                         <div class="col-4 text-center">
@@ -28,6 +31,7 @@
                             <img src="https://avatarfiles.alphacoders.com/252/252465.jpg" class="rounded-circle" style="width:80px;height:80px;"> <br>
                             Seraphine <br>
                             <span style="font-size:10px;">@seraphine.qt</span> <br>
+                            <small>Created on {{$room->created_at}}</small>
                         </div>
                     </div> 
                 </ul>

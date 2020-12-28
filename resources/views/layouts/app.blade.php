@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Kumpul.in') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,6 +24,48 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Archivo', sans-serif;
+        }
+
+        .sidenav {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #F6FAFF;
+        overflow-x: hidden;
+        padding-top: 20px;
+        padding-left: 40px;
+        border-right: 1.5px solid green;
+        }
+
+        .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 22px;
+        color: #385A82;
+        display: block;
+        }
+
+        .sidenav a:hover {
+        color: #008B75;
+        }
+
+        .main {
+        margin-left: 160px; /* Same as the width of the sidenav */
+        padding: 0px 10px;
+        }
+
+        @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -32,11 +74,28 @@
             <a href="#about">Kumpul.in</a>
             <br>
             <a href="/timeline">> Timeline</a>
-            <a href="/view_profile">> Profile</a>
+            <a href="/view_profile/{{Auth::id()}}">> Profile</a>
             <a href="/lobby">> Lobby</a>
             <a href="/room">> Room</a>
             <a href="/chat">> Chat</a>
             <a href="/groups">> Group</a>
+
+            <div class="fixed-bottom">
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @else
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                @endif
+            </div>
         </div>
 
         <main class="py-4 main">
