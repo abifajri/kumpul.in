@@ -42,13 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-<<<<<<< HEAD
+
     public function messages()
     {
         return $this->hasMany(Message::class);
     }
 
-=======
     public function groups()
     {
         return $this->belongsToMany(Group::class, 'group_members');
@@ -61,5 +60,8 @@ class User extends Authenticatable
     public function memberOfRooms() {
         return $this->belongsToMany('App\Models\Room', 'user_room');
     }
->>>>>>> 3193f8e24c377eac4ff443c3434e9ce2d71d7d54
+
+    public function adminOfRooms(){
+        return $this->hasMany(Room::class, 'admin_id');
+    }
 }
