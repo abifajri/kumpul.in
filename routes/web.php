@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GroupsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/groups/create', function() {
-    return view('groups.create');
-})->name('gorups.create');
+Route::get('/groups/create', [GroupsController::class, 'create'])->name('gorups.create');
 
-Route::get('/groups', function() {
-    return view('groups.index');
-})->name('groups.index');
+
+Route::get('/groups/{group}', [GroupsController::class, 'index'])->name('groups.index');
+
+Route::post('/groups/create', [GroupsController::class, 'store'])->name('groups.store');
 
 Route::get('/room/edit', function(){
     return view('room.edit');
@@ -45,9 +45,11 @@ Route::get('/lobby', [App\Http\Controllers\LobbyController::class, 'index'])->na
 
 // Lobby
 Route::get('/lobby', [App\Http\Controllers\LobbyController::class, 'index'])->name('lobby');
+Route::get('/lobby/join/{id}', [App\Http\Controllers\LobbyController::class, 'joinRoom'])->name('join_room');
 
 // Room
-Route::get('/room/show/{id}', [App\Http\Controllers\RoomController::class, 'index'])->name('room');
+Route::get('/room', [App\Http\Controllers\RoomController::class, 'index'])->name('room');
+Route::get('/room/show/{id}', [App\Http\Controllers\RoomController::class, 'show'])->name('show_room');
 Route::get('/room/create', [App\Http\Controllers\RoomController::class, 'create'])->name('create_room');
 Route::post('/room/create', [App\Http\Controllers\RoomController::class, 'store'])->name('store_room');
 
