@@ -16,11 +16,12 @@ class GroupsController extends Controller
     public function index($id){
         try {
             $group = Group::find($id);
-            $members = GroupMember::where('group_id', $id);
+            $members = Group::find($id)->users()->get();
             return view('groups.index')->with('data', [$group, $members]);
         } catch (\Throwable $th) {
-            return redirect()->route('home');
+            return redirect()->route('timeline');
         }
+        
     }
 
     public function create(){

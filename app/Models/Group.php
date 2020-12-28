@@ -18,4 +18,9 @@ class Group extends Model
     protected $hidden = [
         'password',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'group_members');
+    }
 }

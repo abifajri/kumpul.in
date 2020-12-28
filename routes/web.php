@@ -24,7 +24,7 @@ Route::get('/chat', [App\Http\Controllers\ChatController::class, 'index'])->name
 
 Route::get('/groups/{group}', [GroupsController::class, 'index'])->name('groups.index');
 
-Route::post('/groups', [GroupsController::class, 'store'])->name('groups.store');
+Route::post('/groups/create', [GroupsController::class, 'store'])->name('groups.store');
 
 Route::get('/room/edit', function(){
     return view('room.edit');
