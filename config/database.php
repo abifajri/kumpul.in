@@ -11,6 +11,8 @@ $database = substr($url["path"], 1);
 
 return [
 
+    
+
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -72,9 +74,9 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
+            'url' => $url,
             'host' => $host,
-            'port' => env('DB_PORT', '5432'),
+            'port' => '5432',
             'database' => $database,
             'username' => $username,
             'password' => $password,
