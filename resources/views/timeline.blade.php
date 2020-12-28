@@ -17,7 +17,9 @@
         
     </style>
 
-    <body>
+    <body style="background-color: #F6FAFF;
+                padding-top: 25px;
+                padding-left: 250px;">
         <div class="container">
             <div class="col text-center">
                 <h2>Timeline</h2>
