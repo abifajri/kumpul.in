@@ -54,4 +54,8 @@ class User extends Authenticatable
     public function memberOfRooms() {
         return $this->belongsToMany('App\Models\Room', 'user_room');
     }
+
+    public function adminOfRooms(){
+        return $this->hasMany(Room::class, 'admin_id');
+    }
 }

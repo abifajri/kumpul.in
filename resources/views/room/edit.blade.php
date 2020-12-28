@@ -5,26 +5,26 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h3 class="text-center">
-                Create Room
+                Edit Room
             </h3>
 
-            <form method="PUT" action="{{route('room.update')}}">
+            <form method="POST" action="{{route('room.update', ['room' => $room->id])}}">
                 @csrf
                 <div class="form-group">
                     <label for="roomName">Room Name</label>
-                    <input class="form-control" id="roomName" name="roomName" placeholder="">
+                    <input class="form-control" id="roomName" name="roomName" value="{{$room->name}}" placeholder="">
                 </div>
                 <div class="form-group">
                     <label for="roomDescription">Description</label>
-                    <textarea class="form-control" id="roomDescription" name="roomDescription" rows="3"></textarea>
+                    <textarea class="form-control" id="roomDescription" name="roomDescription" rows="3" value="{{$room->description}}"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="roomCapacity">Capacity</label>
-                    <input type="number" min="1" max="99" size="1" maxlength="2" class="form-control" id="roomCapacity" name="roomCapacity" placeholder="">
+                    <input type="number" min="1" max="99" size="1" maxlength="2" class="form-control" id="roomCapacity" value="{{$room->capacity}}" name="roomCapacity" placeholder="">
                 </div>
                 <div class="form-group">
                     <label for="roomActivity">Activity</label>
-                    <input class="form-control" id="roomActivity" name="roomActivity" placeholder="">
+                    <input class="form-control" id="roomActivity" name="roomActivity" value="{{$room->activity}}" placeholder="">
                 </div>
                 <div class="form-group">
                     <label for="roomPassword">Password</label>
@@ -34,7 +34,7 @@
                     <div class="col-sm-2">Is Private</div>
                     <div class="col-sm-10">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="roomIsPrivate" name="roomIsPrivate">
+                            <input class="form-check-input" type="checkbox" id="roomIsPrivate" name="roomIsPrivate" value="{{$room->isPrivate}}">
                             <label class="form-check-label" for="roomIsPrivate" style="font-size:14px;">
                                 (Your room won't show in public lobby.)
                             </label>

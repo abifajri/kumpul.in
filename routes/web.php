@@ -27,7 +27,7 @@ Route::get('/groups/{group}', [GroupsController::class, 'index'])->name('groups.
 Route::post('/groups/create', [GroupsController::class, 'store'])->name('groups.store');
 
 Route::get('/room/{room}/edit', [App\Http\Controllers\RoomController::class, 'edit'])->name('room.edit');
-Route::put('/room/{room}/edit', [App\Http\Controllers\RoomController::class, 'update'])->name('room.update');
+Route::post('/room/{room}/edit', [App\Http\Controllers\RoomController::class, 'update'])->name('room.update');
 
 Route::get('/', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
 

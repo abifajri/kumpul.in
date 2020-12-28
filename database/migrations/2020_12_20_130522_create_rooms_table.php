@@ -21,6 +21,7 @@ class CreateRoomsTable extends Migration
             $table->string('activity');
             $table->string('password')->nullable();
             $table->boolean('isPrivate');
+            $table->foreignId('admin_id')->constrained('users');
             $table->timestamps();
         });
     }
