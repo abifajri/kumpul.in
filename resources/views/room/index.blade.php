@@ -38,8 +38,8 @@
                                 <div class="col-4 text-center">
                                     <u>Room Master</u> <br>
                                     <img src="https://avatarfiles.alphacoders.com/252/252465.jpg" class="rounded-circle" style="width:80px;height:80px;"> <br>
-                                    {{ \App\Models\User::where('id', $room->id)->first()->name }} <br>
-                                    <span style="font-size:12px;">{{ \App\Models\User::where('id', $room->id)->first()->username }} </span> <br>
+                                    {{ \App\Models\User::where('id', $room->admin_id)->first()->name }} <br>
+                                    <span style="font-size:12px;">{{ \App\Models\User::where('id', $room->admin_id)->first()->username }} </span> <br>
                                     <small>Created on {{$room->created_at}}</small>
                                 </div>
                             </div> 

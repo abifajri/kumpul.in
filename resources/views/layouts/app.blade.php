@@ -78,7 +78,7 @@
             <a href="/lobby">> Lobby</a>
             <a href="/room">> Room</a>
             <a href="/chat">> Chat</a>
-            <a href="/groups">> Group</a>
+            <a href="/groups/create">> Group</a>
 
             <div class="fixed-bottom">
                 @if (Auth::guest())
